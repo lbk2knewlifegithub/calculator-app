@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    // shadow color delete and reset
+    --shadow-delete-reset: 224, 28%, 35%;
+    // shadow qual button
+    --shadow-equal: 6, 70%, 34%;
+    --shadow-key: 28, 16%, 65%;
+
+    ////////////////////
+    // text colors /////
+    ////////////////////
+    --text-fill: 0, 0, 100%;
+    --text-inverted: 221, 14%, 31%;
+
+    /////////////////////////////
+    // BACKGROUND COLORS ////////
+    /////////////////////////////
+    --bg-main: 222, 26%, 31%;
+    // background toggle, keypad background
+    --bg-toggle-keypad: 223, 31%, 20%;
+    --bg-screen: 224, 36%, 15%;
+    // background delete and reset key
+    --bg-key-delete-reset: 225, 21%, 49%;
+    // background equal button
+    --bg-equal: 6, 63%, 50%;
+    // background for the rest of the keys
+    --bg-key: 30, 25%, 89%;
+  }
+
+  //make default form look nice
+  [type="text"] {
+    @apply w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
+  }
+
+  [type="checkbox"],
+  [type="radio"] {
+    @apply border-gray-300 rounded text-indigo-600 focus:ring-indigo-500;
+  }
+}
+
+// input.ng-invalid.ng-touched {
+//   @apply border-2 border-danger;
+// }
+
+@layer components {
+}
