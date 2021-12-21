@@ -32,7 +32,7 @@ module.exports = {
       },
       colors: {
         "delete-reset": withOpacity("--shadow-delete-reset"),
-        equal: withOpacity("--shadow-equal"),
+        "equal-ball": withOpacity("--shadow-equal-ball"),
         key: withOpacity("--shadow-key"),
       },
       // create custom text colors here
@@ -43,9 +43,9 @@ module.exports = {
       // create custom background colors here
       backgroundColor: {
         main: withOpacity("--bg-main"),
-        equal: withOpacity("--bg-equal"),
         key: withOpacity("--bg-key"),
         screen: withOpacity("--bg-screen"),
+        "equal-ball": withOpacity("--bg-equal-ball"),
         "toggle-keypad": withOpacity("--bg-toggle-keypad"),
         "delete-reset": withOpacity("--bg-delete-reset"),
       },

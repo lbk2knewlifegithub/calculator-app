@@ -7,13 +7,13 @@
     // shadow color delete and reset
     --shadow-delete-reset: 224, 28%, 35%;
     // shadow qual button
-    --shadow-equal: 6, 70%, 34%;
+    --shadow-equal-ball: 6, 70%, 34%;
     --shadow-key: 28, 16%, 65%;
 
     ////////////////////
     // text colors /////
     ////////////////////
-    --text-fill: 0, 0, 100%;
+    --text-fill: 0, 0%, 100%;
     --text-inverted: 221, 14%, 31%;
 
     /////////////////////////////
@@ -25,8 +25,8 @@
     --bg-screen: 224, 36%, 15%;
     // background delete and reset key
     --bg-key-delete-reset: 225, 21%, 49%;
-    // background equal button
-    --bg-equal: 6, 63%, 50%;
+    // background equal, ball  button
+    --bg-equal-ball: 6, 63%, 50%;
     // background for the rest of the keys
     --bg-key: 30, 25%, 89%;
   }

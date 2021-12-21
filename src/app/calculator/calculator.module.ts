@@ -1,10 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { CalculatorRoutingModule } from './calculator-routing.module';
-import { CalculatorComponent } from './components';
+import {
+  CalculatorComponent,
+  NavbarComponent,
+  ThemeComponent
+} from './components';
 import { CalculatorPageComponent } from './containers';
 
-const COMPONENTS = [CalculatorComponent];
+const COMPONENTS = [CalculatorComponent, NavbarComponent, ThemeComponent];
 const CONTAINERS = [CalculatorPageComponent];
 
 @NgModule({
