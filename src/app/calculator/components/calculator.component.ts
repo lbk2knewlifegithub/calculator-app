@@ -60,6 +60,7 @@ export class CalculatorComponent implements OnInit {
 
   ngOnInit(): void {
     this._themeService.loadTheme();
+
   }
 
   onTheme(theme: number) {
