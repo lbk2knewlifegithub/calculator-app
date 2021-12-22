@@ -1,0 +1,11 @@
+.key {
+  @apply duration-500 text-key bg-key p-4 text-2xl font-black rounded-lg shadow-key tracking-wider disabled:opacity-30;
+}
+
+.del {
+  @apply text-key-accent bg-delete-reset text-base shadow-delete-reset font-bold;
+}
+
+.equal {
+  @apply text-key-equal bg-equal-ball shadow-equal font-bold text-base;
+}

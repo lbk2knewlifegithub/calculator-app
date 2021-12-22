@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit
+} from '@angular/core';
+import { formatNumber } from '@lbk/calculator/utils';
 import { Observable } from 'rxjs';
 import { ThemeService } from '../services/theme.service';
 
@@ -15,7 +21,7 @@ import { ThemeService } from '../services/theme.service';
       <lbk-screen
         [calculation]="calculation"
         [result]="result"
-        [effect]="effect"
+        [effect]="effectCompute"
         class="mt-8"
       ></lbk-screen>
 
@@ -24,6 +30,7 @@ import { ThemeService } from '../services/theme.service';
         [disabledEqual]="disabledEqual"
         [disabledOperator]="disabledOperator"
         [disabledZero]="disabledZero"
+        [disabledOneToNine]="disabledOneToNine"
         [disabledDel]="disabledDel"
         [disabledReset]="disabledReset"
         (del)="onDel()"
@@ -39,9 +46,15 @@ export class CalculatorComponent implements OnInit {
   theme$!: Observable<number>;
   calculation = '';
   result = '';
-  effect = false;
+  effectCompute = false;
+  effectUndo = false;
+  // Only undo the last calculation
+  history?: string;
 
-  constructor(private readonly _themeService: ThemeService) {
+  constructor(
+    private readonly _themeService: ThemeService,
+    private cd: ChangeDetectorRef
+  ) {
     this.theme$ = this._themeService.theme$;
   }
 
@@ -65,27 +78,45 @@ export class CalculatorComponent implements OnInit {
       this.result = '';
       return;
     }
+
+    if (this.result == '' && !!this.history) {
+      this.result = this.calculation;
+      this.calculation = this.history;
+      this.result = this.compute(this.calculation);
+      this.history = '';
+      return;
+    }
+
     this.result = this.compute(this.calculation);
   }
 
   onResult() {
-    this.effect = true;
-
+    this.effectCompute = true;
     setTimeout(() => {
-      this.calculation = this.result;
+      this.history = this.calculation;
+      this.calculation = formatNumber(this.result);
       this.result = '';
-      this.effect = false;
+      this.effectCompute = false;
+      this.cd.detectChanges();
     }, 300);
   }
 
   onKey(value: string) {
     this.calculation += value;
+
+    // When last key is dot will append value to result not compute
+    if (this.lastKey() === '.') {
+      this.result = this.calculation;
+      return;
+    }
+
     this.result = this.compute(this.calculation);
   }
 
   onReset() {
     this.calculation = '';
     this.result = '';
+    this.history = '';
   }
 
   /**
@@ -108,23 +139,41 @@ export class CalculatorComponent implements OnInit {
     const lastKey = this.lastKey();
     if (!lastKey) return true;
     if (this.isOperator(lastKey)) return true;
-
-    return lastKey === '.';
+    if (lastKey === '.') return true;
+    if (!this.isValid(this.calculation + '.')) return true;
+    return false;
   }
+
+  isValid(value: string): boolean {
+    try {
+      eval(value);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   get disabledOperator(): boolean {
     const lastKey = this.lastKey();
     if (!lastKey) return true;
+    if (lastKey === '.') return true;
 
     return this.isOperator(lastKey);
   }
 
   get disabledZero(): boolean {
     const lastKey = this.lastKey();
-    return lastKey === '/';
+    if (lastKey === '0' && this.calculation.length === 1) return true;
+    if (lastKey === '/') return true;
+    return false;
   }
 
   get disabledEqual(): boolean {
-    return !this.lastKey();
+    const lastKey = this.lastKey();
+    if (lastKey === '.') return true;
+    if (this.isOperator(lastKey)) return true;
+
+    return !lastKey;
   }
 
   get disabledDel(): boolean {
@@ -135,6 +184,11 @@ export class CalculatorComponent implements OnInit {
     return !this.lastKey();
   }
 
+  get disabledOneToNine(): boolean {
+    const lastKey = this.lastKey();
+    return lastKey === '0' && this.calculation.length === 1;
+  }
+
   private isOperator(key: string): boolean {
     return key == '+' || key == '-' || key == '*' || key == '/';
   }
@@ -142,5 +196,4 @@ export class CalculatorComponent implements OnInit {
   private lastKey(): string {
     return this.calculation.charAt(this.calculation.length - 1);
   }
-
 }

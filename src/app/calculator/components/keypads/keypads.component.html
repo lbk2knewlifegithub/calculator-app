@@ -1,0 +1,42 @@
+<div class="grid grid-cols-4 gap-4 p-6 bg-toggle-keypad rounded-xl">
+  <!-- row 1 -->
+  <button [disabled]="disabledOneToNine" (click)="onKey($event)" class="key"> 7 </button>
+  <button [disabled]="disabledOneToNine" (click)="onKey($event)" class="key"> 8 </button>
+  <button [disabled]="disabledOneToNine" (click)="onKey($event)" class="key"> 9 </button>
+  <button [disabled]="disabledDel" (click)="onKey($event)" class="relative key del"> <span
+      class="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">DEL</span> </button>
+  <!-- end row 1 -->
+
+  <!-- row 2 -->
+  <button [disabled]="disabledOneToNine" (click)="onKey($event)" class="key"> 4 </button>
+  <button [disabled]="disabledOneToNine" (click)="onKey($event)" class="key"> 5 </button>
+  <button [disabled]="disabledOneToNine" (click)="onKey($event)" class="key"> 6 </button>
+  <button [disabled]="disabledOperator" (click)="onKey($event)" class="key"> + </button>
+  <!-- end row 2 -->
+
+  <!-- row 3 -->
+  <button [disabled]="disabledOneToNine" (click)="onKey($event)" class="key"> 1 </button>
+  <button [disabled]="disabledOneToNine" (click)="onKey($event)" class="key"> 2 </button>
+  <button [disabled]="disabledOneToNine" (click)="onKey($event)" class="key"> 3 </button>
+  <button [disabled]="disabledOperator" (click)="onKey($event)" class="key"> - </button>
+  <!-- end row 3 -->
+
+  <!-- row 4 -->
+  <button [disabled]="disabledDot" (click)="onKey($event)" class="key"> . </button>
+  <!-- zero -->
+  <button [disabled]="disabledZero" (click)="onKey($event)" class="key">
+    <p class="font-bold scale-125">0</p>
+  </button>
+  <!-- end zero -->
+  <button [disabled]="disabledOperator" (click)="onKey($event)" class="key"> / </button>
+  <button [disabled]="disabledOperator" (click)="onKey($event)" class="key"> * </button>
+  <!-- end row 4 -->
+
+  <!-- row 5 -->
+  <button [disabled]="disabledReset" (click)="onKey($event)" class="col-span-2 key del"> RESET </button>
+
+  <!-- equal button -->
+  <button [disabled]="disabledEqual" (click)="onKey($event)" class="col-span-2 key equal "> = </button>
+  <!-- end equal button -->
+  <!-- end row 45-->
+</div>
