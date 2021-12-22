@@ -1,11 +1,11 @@
 .key {
-  @apply duration-500 text-key bg-key p-4 text-2xl font-black rounded-lg shadow-key tracking-wider disabled:opacity-30 hover:brightness-150 sm:py-3 ;
+  @apply duration-500 text-key bg-key p-2 text-2xl font-black rounded-lg shadow-key tracking-wider disabled:opacity-30 hover:brightness-150 md:py-3;
 }
 
 .del {
-  @apply text-key-accent bg-delete-reset text-base shadow-delete-reset font-bold sm:py-4;
+  @apply text-key-accent bg-delete-reset text-base shadow-delete-reset font-bold py-3;
 }
 
 .equal {
-  @apply text-key-equal bg-equal-ball shadow-equal font-bold text-base sm:py-4;
+  @apply text-key-equal bg-equal-ball shadow-equal font-bold text-base py-4;
 }

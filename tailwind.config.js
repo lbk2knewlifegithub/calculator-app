@@ -13,7 +13,6 @@ function withOpacity(variableName) {
 
 module.exports = {
   content: [join(__dirname, "src/**/*.{html,ts}")],
-  darkMode: "class",
   theme: {
     container: {
       center: true,

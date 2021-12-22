@@ -15,16 +15,8 @@ export class ThemeService {
     this.setTheme(theme);
   }
 
-  private themeName(theme: number): string {
-    if (theme === 0) return '';
-
-    return `theme-${theme + 1}`;
-  }
-
   setTheme(theme: number): void {
-    document.body.className = `font-mono bg-main text-fill ${this.themeName(
-      theme
-    )}`;
+    document.body.className = `font-mono bg-main text-fill theme-${theme}`;
     this._theme.next(theme);
     localStorage.setItem(this.themeKey, JSON.stringify(theme));
   }

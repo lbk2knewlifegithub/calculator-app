@@ -40,7 +40,7 @@ export class ThemeComponent {
   @Input() theme = 2;
 
   get translate() {
-    return `translate(${this.theme * 25}px, -50%)`;
+    return `translate(${this.theme *  23 + 5}px, -50%)`;
   }
 
   onTheme(theme?: number) {
