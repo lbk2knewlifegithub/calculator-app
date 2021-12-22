@@ -5,16 +5,18 @@
 @layer base {
   :root {
     // shadow color delete and reset
-    --shadow-delete-reset: 224, 28%, 35%;
+    --shadow-delete-reset: hsl(224, 28%, 35%);
     // shadow qual button
-    --shadow-equal-ball: 6, 70%, 34%;
-    --shadow-key: 28, 16%, 65%;
+    --shadow-equal-ball: hsl(6, 70%, 34%);
+    --shadow-key: hsl(28, 16%, 65%);
 
     ////////////////////
     // text colors /////
     ////////////////////
     --text-fill: 0, 0%, 100%;
-    --text-inverted: 221, 14%, 31%;
+    --text-key: 221, 14%, 31%;
+    --text-key-accent: 0, 0%, 100%;
+    --text-key-equal: 0, 0%, 100%;
 
     /////////////////////////////
     // BACKGROUND COLORS ////////
@@ -24,21 +26,75 @@
     --bg-toggle-keypad: 223, 31%, 20%;
     --bg-screen: 224, 36%, 15%;
     // background delete and reset key
-    --bg-key-delete-reset: 225, 21%, 49%;
+    --bg-delete-reset: 225, 21%, 49%;
     // background equal, ball  button
     --bg-equal-ball: 6, 63%, 50%;
     // background for the rest of the keys
     --bg-key: 30, 25%, 89%;
+
+    .theme-2 {
+      // shadow color delete and reset
+      --shadow-delete-reset: hsl(185, 58%, 25%);
+      // shadow qual button
+      --shadow-equal-ball: hsl(25, 99%, 27%);
+      --shadow-key: hsl(35, 11%, 61%);
+
+      ////////////////////
+      // text colors /////
+      ////////////////////
+      --text-fill: 60, 10%, 19%;
+      --text-key: 60, 10%, 19%;
+      --text-key-accent: 0, 0%, 100%;
+      --text-key-equal: 0, 0%, 100%;
+
+      /////////////////////////////
+      // BACKGROUND COLORS ////////
+      /////////////////////////////
+      --bg-main: 0, 0%, 90%;
+      // background toggle, keypad background
+      --bg-toggle-keypad: 0, 5%, 81%;
+      --bg-screen: 0, 0%, 93%;
+      // background delete and reset key
+      --bg-delete-reset: 185, 42%, 37%;
+      // background equal, ball  button
+      --bg-equal-ball: 25, 98%, 40%;
+      // background for the rest of the keys
+      --bg-key: 45, 7%, 89%;
+    }
+
+    .theme-3 {
+      // shadow color delete and reset
+      --shadow-delete-reset: hsl(285, 91%, 52%);
+      // shadow qual button
+      --shadow-equal-ball: hsl(177, 92%, 70%);
+      --shadow-key: hsl(290, 70%, 36%);
+
+      ////////////////////
+      // text colors /////
+      ////////////////////
+      --text-fill: 52, 100%, 62%;
+      --text-key: 52, 100%, 62%;
+      --text-key-accent: 0, 0%, 100%;
+      --text-key-equal: 198, 20%, 13%;
+
+      /////////////////////////////
+      // BACKGROUND COLORS ////////
+      /////////////////////////////
+      --bg-main: 268, 75%, 9%;
+      // background toggle, keypad background
+      --bg-toggle-keypad: 268, 71%, 12%;
+      --bg-screen: 268, 71%, 12%;
+      // background delete and reset key
+      --bg-delete-reset: 281, 89%, 26%;
+      // background equal, ball  button
+      --bg-equal-ball: 176, 100%, 44%;
+      // background for the rest of the keys
+      --bg-key: 268, 47%, 21%;
+    }
   }
 
-  //make default form look nice
   [type="text"] {
-    @apply w-full border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500;
-  }
-
-  [type="checkbox"],
-  [type="radio"] {
-    @apply border-gray-300 rounded text-indigo-600 focus:ring-indigo-500;
+    @apply w-full border-none ;
   }
 }
 

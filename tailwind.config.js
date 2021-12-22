@@ -31,14 +31,19 @@ module.exports = {
         mono: ["'Spartan'", ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        "delete-reset": withOpacity("--shadow-delete-reset"),
-        "equal-ball": withOpacity("--shadow-equal-ball"),
-        key: withOpacity("--shadow-key"),
+        ball: "0 5px 0px 0px var(--shadow-equal-ball)",
+      },
+      boxShadow: {
+        key: "0 5px 0px 0px var(--shadow-key)",
+        "delete-reset": "0 5px 0px 0px var(--shadow-delete-reset)",
+        equal: "0 5px 0px 0px var(--shadow-equal-ball)",
       },
       // create custom text colors here
       textColor: {
         fill: withOpacity("--text-fill"),
-        inverted: withOpacity("--text-inverted"),
+        key: withOpacity("--text-key"),
+        "key-accent": withOpacity("--text-key-accent"),
+        "key-equal": withOpacity("--text-key-equal"),
       },
       // create custom background colors here
       backgroundColor: {
