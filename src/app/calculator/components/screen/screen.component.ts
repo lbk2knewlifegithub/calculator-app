@@ -7,13 +7,13 @@ import { calculationAnim, resultAnim } from './screen.anim';
   selector: 'lbk-screen',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="grid py-4 px-6  bg-screen rounded-xl font-bold  tracking-wide">
+    <div class="grid py-4 px-4  bg-screen rounded-xl font-bold  tracking-wide">
       <!-- calculation -->
       <input
         [@calculation]="effect ? 'close' : 'open'"
         [value]="formattedCalculation"
         disabled
-        class="bg-screen font-bold text-3xl text-right "
+        class="bg-screen font-bold text-3xl text-right px-2"
         type="text"
       />
       <!-- end calculation -->
@@ -23,7 +23,7 @@ import { calculationAnim, resultAnim } from './screen.anim';
         [@result]="effect ? 'close' : 'open'"
         disabled
         [value]="formattedResult"
-        class="bg-screen text-xl text-right leading-[2.25rem]"
+        class="bg-screen text-xl text-right leading-[2.25rem] px-2"
         type="text"
       />
       <!-- end result -->
