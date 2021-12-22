@@ -1,10 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output
-} from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { formatNumber } from '@lbk/calculator/utils';
 import { calculationAnim, resultAnim } from './screen.anim';
 
@@ -46,28 +41,26 @@ export class ScreenComponent {
       return this.calculation;
     }
 
-    // const operators = this.splitOperators(this.calculation);
+    const operators = this.splitOperators(this.calculation);
 
-    // const numbers = this.calculation
-    //   .replace(/[\+\-\*\/]/g, ' ')
-    //   .split(' ')
-    //   .map((x) => new DecimalPipe(navigator.language).transform(x) ?? '');
+    const numbers = this.calculation
+      .replace(/[\+\-\*\/]/g, ' ')
+      .split(' ')
+      .map((x) => formatNumber(x));
 
-    // let result = '';
-    // for (let i = 0; i < numbers.length; i++) {
-    //   const num = numbers[i];
-    //   const operator = operators[i];
+    let result = '';
+    for (let i = 0; i < numbers.length; i++) {
+      const num = numbers[i];
+      const operator = operators[i];
 
-    //   if (operator) {
-    //     result += num + operator;
-    //     continue;
-    //   }
-    //   result += num;
-    // }
-    // console.log(result);
+      if (operator) {
+        result += num + operator;
+        continue;
+      }
+      result += num;
+    }
 
-    // return result;
-    return this.calculation;
+    return result;
   }
 
   private splitOperators(calculation: string): string[] {

@@ -60,7 +60,6 @@ export class CalculatorComponent implements OnInit {
 
   ngOnInit(): void {
     this._themeService.loadTheme();
-
   }
 
   onTheme(theme: number) {
@@ -147,8 +146,8 @@ export class CalculatorComponent implements OnInit {
 
   isValid(value: string): boolean {
     try {
-      eval(value);
-      return true;
+      const evaluate = eval(value);
+      return evaluate !== Infinity && evaluate !== -Infinity;
     } catch {
       return false;
     }
@@ -165,7 +164,7 @@ export class CalculatorComponent implements OnInit {
   get disabledZero(): boolean {
     const lastKey = this.lastKey();
     if (lastKey === '0' && this.calculation.length === 1) return true;
-    if (lastKey === '/') return true;
+    if(!this.isValid(this.calculation + '0')) return true;
     return false;
   }
 
@@ -173,6 +172,7 @@ export class CalculatorComponent implements OnInit {
     const lastKey = this.lastKey();
     if (lastKey === '.') return true;
     if (this.isOperator(lastKey)) return true;
+    if (!this.isValid(this.calculation)) return true;
 
     return !lastKey;
   }
